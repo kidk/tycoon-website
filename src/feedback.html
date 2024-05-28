@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hospitality Tycoon</title>
+        <meta name="description" content="Hospitality Tycoon is a detailed hotel simulation game where you can build the best (or worst) hotel by providing guests with rooms, restaurants, swimming pools, bars, and much more.">
+        <meta http-equiv="content-language" content="en">
+        <link href="./index.css" rel="stylesheet">
+
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
+        <div class="bg-white">
+<!-- Header -->
+            <header class="absolute inset-x-0 top-0 z-50">
+                <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                    <div class="flex lg:flex-1">
+                        <a href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Hospitality Tycoon</span>
+                            <img class="h-8 w-auto" src="icon.png" alt="Hospitality Tycoon">
+                        </a>
+                    </div>
+                    <div class="flex lg:hidden">
+                        <button type="button" class="toggle-menu -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="hidden lg:flex lg:gap-x-12">
+                        <a href="https://mastodon.gamedev.place/@hospitalitytycoon" target="_blank" class="text-sm font-semibold leading-6 text-gray-900">Mastodon</a>
+                        <a href="https://discord.gg/g7crARUAtd" target="_blank" class="text-sm font-semibold leading-6 text-gray-900">Discord</a>
+                        <a href="https://twitter.com/HospitalityTyco" target="_blank" class="text-sm font-semibold leading-6 text-gray-900">Twitter / X</a>
+                        <a href="https://www.reddit.com/r/hospitalitytycoon/" target="_blank" class="text-sm font-semibold leading-6 text-gray-900">Reddit</a>
+                        <!--<a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>-->
+                    </div>
+                    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <a href="#waiting-list" class="text-sm font-semibold leading-6 text-gray-900">Join waitinglist <span aria-hidden="true">&rarr;</span></a>
+                    </div>
+                </nav>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+                <div class="lg:hidden hidden" role="dialog" aria-modal="true" id="menu">
+                    <div class="fixed inset-0 z-50"></div>
+                    <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                        <div class="flex items-center justify-between">
+                            <a href="#" class="-m-1.5 p-1.5">
+                                <span class="sr-only">Hospitality Tycoon</span>
+                                <img class="h-8 w-auto" src="icon.png" alt="Hospitality Tycoon">
+                            </a>
+                            <button type="button" class="toggle-menu -m-2.5 rounded-md p-2.5 text-gray-700">
+                                <span class="sr-only">Close menu</span>
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mt-6 flow-root">
+                            <div class="-my-6 divide-y divide-gray-500/10">
+                                <div class="space-y-2 py-6">
+                                    <a href="https://mastodon.gamedev.place/@hospitalitytycoon" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Mastodon</a>
+                                    <a href="https://discord.gg/g7crARUAtd" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Discord</a>
+                                    <a href="https://twitter.com/HospitalityTyco" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Twitter / X</a>
+                                </div>
+                                <div class="py-6">
+                                    <a href="#waiting-list" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Join waitinglist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="isolate">
+    <!-- Hero section -->
+                <div class="relative pt-14">
+                    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+                        <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#123123] to-[#cccccc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                    </div>
+                    <div class="py-24 sm:py-32">
+                        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                            <div class="mx-auto max-w-2xl text-center">
+                                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Bugs or feedback?</h1>
+                                <p class="mt-6 text-lg leading-8 text-gray-600">Contact us on Mastodon, Discord, Twitter or Reddit using the links below.</p>
+                                <div class="space-y-2 py-6">
+                                    <a href="https://mastodon.gamedev.place/@hospitalitytycoon" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Mastodon</a>
+                                    <a href="https://discord.gg/g7crARUAtd" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Discord</a>
+                                    <a href="https://twitter.com/HospitalityTyco" target="_blank" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Twitter / X</a>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+                        <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+        $(function() {
+            var menu = $("#menu");
+            $(".toggle-menu").click(function() {
+                menu.toggleClass("hidden");
+            });
+        });
+        </script>
+        <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_to9ksJGyd5GhOebz8zZF5Vro8DjCFFxyNvg6wJrGIUH',{api_host:'https://posthog.savawel.com'})
+        </script>
+    </body>
+</html>
